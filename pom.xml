@@ -5,13 +5,14 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.github.vtbaas</groupId>
-  <artifactId>java_sdk</artifactId>
+  <artifactId>vbaas-java-sdk</artifactId>
   <version>0.0.1</version>
+  <packaging>jar</packaging>
 
-  <name>java_sdk</name>
+  <name>vbaas-java-sdk</name>
   <description>
     Java SDK that supports writing chaincodes on vBaaS platform.
-</description>
+  </description>
   <url>https://engineering.atviettelsolutions.com/</url>
 
   <properties>
@@ -68,8 +69,8 @@
                     </execution>
                 </executions>
             </plugin>
-                
-                <plugin>
+
+                <!-- <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>3.2.0</version>
@@ -84,7 +85,7 @@
                     <configuration>
                         <javadocExecutable>${JAVA_HOME}/bin/javadoc</javadocExecutable>
                     </configuration>
-                </plugin>
+                </plugin> -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
@@ -103,6 +104,19 @@
     </profile>
   </profiles>
 
+  <repositories>
+    <repository>
+        <id>snapshots-repo</id>
+        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        <releases>
+            <enabled>false</enabled>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+  </repositories>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -111,18 +125,58 @@
       <scope>test</scope>
     </dependency>
 
+  <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>3.22.0</version>
+      <scope>test</scope>
+  </dependency>
+  <dependency>
+      <groupId>org.hyperledger.fabric-sdk-java</groupId>
+      <artifactId>fabric-sdk-java</artifactId>
+      <version>[2.2.0,2.3.0)</version>
+  </dependency>
+  <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>4.4.0</version>
+      <scope>test</scope>
+  </dependency>
+  <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java8</artifactId>
+      <version>7.2.3</version>
+      <scope>test</scope>
+  </dependency>
+  <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-junit</artifactId>
+      <version>7.2.3</version>
+      <scope>test</scope>
+  </dependency>
+  <dependency><!-- override the version under cloudant-client -->
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.15</version>
+  </dependency>
+  <dependency>
+      <groupId>com.ibm.cloud</groupId>
+      <artifactId>cloudant</artifactId>
+      <version>0.1.4</version>
+  </dependency>
+
     <!-- https://mvnrepository.com/artifact/org.hyperledger.fabric/fabric-gateway-java -->
-    <dependency>
+    <!-- <dependency>
       <groupId>org.hyperledger.fabric</groupId>
       <artifactId>fabric-gateway-java</artifactId>
       <version>2.2.5</version>
-    </dependency>
+    </dependency> -->
 
-    <dependency>
+    <!-- <dependency>
 			<groupId>org.hyperledger.fabric-sdk-java</groupId>
 			<artifactId>fabric-sdk-java</artifactId>
 			<version>2.0.0-SNAPSHOT</version>
-		</dependency>
+		</dependency> -->
 
   </dependencies>
 
